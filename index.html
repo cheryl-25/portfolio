@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cheryl Achieng — portfolio</title>
+<style>
+  :root{
+    --navy-deep:#0B1B33;
+    --navy:#102A4C;
+    --navy-soft:#1C3A63;
+    --paper:#F6F3EC;
+    --amber:#E8A53D;
+    --amber-deep:#C9851F;
+    --ink:#16202E;
+    --line:rgba(255,255,255,0.14);
+    --line-dark:rgba(16,32,46,0.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', Arial, sans-serif;
+    overflow-x:hidden;
+  }
+  @font-face{font-family:'fallback';}
+
+  ::selection{background:var(--amber);color:var(--navy-deep);}
+
+  a{color:inherit;text-decoration:none;}
+
+  .display{
+    font-family: Georgia, 'Times New Roman', serif;
+    letter-spacing:-0.01em;
+  }
+  .mono{
+    font-family: 'Courier New', monospace;
+    letter-spacing:0.02em;
+  }
+
+  /* ===== NAV ===== */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:18px 5vw;
+    background:rgba(246,243,236,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line-dark);
+  }
+  .logo{
+    font-family:Georgia,serif;font-weight:700;font-size:1.15rem;
+    letter-spacing:0.02em;
+  }
+  .logo span{color:var(--amber-deep);}
+  nav ul{display:flex;gap:28px;list-style:none;}
+  nav a{
+    font-size:0.82rem;text-transform:uppercase;letter-spacing:0.08em;
+    font-weight:600;color:var(--navy);
+    border-bottom:2px solid transparent;
+    padding-bottom:4px;
+    transition:border-color 0.2s;
+  }
+  nav a:hover{border-color:var(--amber-deep);}
+  .nav-toggle{display:none;}
+
+  @media (max-width:760px){
+    nav ul{gap:16px;}
+    nav a{font-size:0.7rem;}
+  }
+
+  section{padding:120px 5vw 90px;position:relative;}
+
+  /* ===== HERO ===== */
+  .hero{
+    min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;
+    background:var(--navy-deep);
+    color:var(--paper);
+    padding-top:140px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.035) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.035) 40px);
+    pointer-events:none;
+  }
+  /* ===== HERO IMAGE ===== */
+
+.hero-inner {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 760px) {
+    .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+
+    .hero-image img {
+        max-width: 400px;
+    }
+
+    .hero {
+        padding-top: 120px;
+    }
+}
+  .ticket-strip{
+    font-family:'Courier New',monospace;
+    font-size:0.78rem;
+    color:var(--amber);
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    display:flex;gap:18px;flex-wrap:wrap;
+    margin-bottom:28px;
+    opacity:0;
+    animation:fadeUp 0.7s ease forwards;
+    animation-delay:0.1s;
+  }
+  .ticket-strip span{opacity:0.85;}
+  .ticket-strip span::before{content:'▸ ';color:var(--amber-deep);}
+
+  .hero h1{
+    font-size:clamp(2.6rem, 7vw, 5.6rem);
+    line-height:0.98;
+    font-weight:700;
+    max-width:920px;
+    opacity:0;
+    animation:fadeUp 0.8s ease forwards;
+    animation-delay:0.25s;
+  }
+  .hero h1 em{
+    font-style:italic;color:var(--amber);
+    font-weight:400;
+  }
+  .hero-sub{
+    margin-top:26px;
+    font-size:1.05rem;
+    max-width:560px;
+    color:#C9D2DE;
+    line-height:1.6;
+    opacity:0;
+    animation:fadeUp 0.8s ease forwards;
+    animation-delay:0.4s;
+  }
+  .hero-ctas{
+    margin-top:42px;
+    display:flex;gap:16px;flex-wrap:wrap;
+    opacity:0;
+    animation:fadeUp 0.8s ease forwards;
+    animation-delay:0.55s;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 26px;
+    font-size:0.85rem;font-weight:600;
+    text-transform:uppercase;letter-spacing:0.06em;
+    border-radius:2px;
+    transition:transform 0.2s, box-shadow 0.2s;
+    cursor:pointer;
+    border:1.5px solid transparent;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-amber{background:var(--amber);color:var(--navy-deep);}
+  .btn-amber:hover{box-shadow:0 8px 24px rgba(232,165,61,0.35);}
+  .btn-outline{border-color:rgba(246,243,236,0.4);color:var(--paper);}
+  .btn-outline:hover{border-color:var(--amber);color:var(--amber);}
+
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(18px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  .scroll-cue{
+    position:absolute;bottom:34px;left:5vw;
+    font-family:'Courier New',monospace;font-size:0.72rem;
+    color:rgba(246,243,236,0.5);letter-spacing:0.1em;
+    text-transform:uppercase;
+    display:flex;align-items:center;gap:10px;
+  }
+  .scroll-cue .line{width:36px;height:1px;background:rgba(246,243,236,0.4);animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:0.4;}50%{opacity:1;}}
+
+  /* ===== PATHS / DUALITY SECTION ===== */
+  .paths{
+    background:var(--paper);
+  }
+  .section-label{
+    font-family:'Courier New',monospace;
+    font-size:0.78rem;text-transform:uppercase;letter-spacing:0.14em;
+    color:var(--amber-deep);font-weight:700;
+    margin-bottom:14px;
+    display:block;
+  }
+  .section-title{
+    font-family:Georgia,serif;font-size:clamp(1.8rem,3.6vw,2.6rem);
+    font-weight:700;margin-bottom:50px;max-width:680px;
+    line-height:1.15;
+  }
+
+  .path-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:0;
+    border:1px solid var(--line-dark);
+  }
+  .path-card{
+    padding:46px 38px;
+    position:relative;
+    transition:background 0.3s;
+  }
+  .path-card:first-child{border-right:1px solid var(--line-dark);}
+  .path-card:hover{background:rgba(16,42,76,0.03);}
+  .path-tag{
+    font-family:'Courier New',monospace;font-size:0.72rem;
+    text-transform:uppercase;letter-spacing:0.1em;
+    color:var(--navy-soft);font-weight:700;
+    margin-bottom:18px;display:inline-block;
+    padding:5px 10px;border:1px solid var(--navy-soft);
+  }
+  .path-card h3{
+    font-family:Georgia,serif;font-size:1.5rem;margin-bottom:14px;
+  }
+  .path-card p{
+    color:#3D4A5C;line-height:1.65;font-size:0.95rem;margin-bottom:22px;
+  }
+  .path-list{list-style:none;font-size:0.88rem;}
+  .path-list li{
+    padding:8px 0;border-top:1px solid var(--line-dark);
+    display:flex;justify-content:space-between;color:#3D4A5C;
+  }
+  .path-list li:last-child{border-bottom:1px solid var(--line-dark);}
+  .path-list .dot{color:var(--amber-deep);}
+
+  @media (max-width:760px){
+    .path-grid{grid-template-columns:1fr;}
+    .path-card:first-child{border-right:none;border-bottom:1px solid var(--line-dark);}
+  }
+
+  /* ===== EXPERIENCE ===== */
+  .experience{background:#EFEBE0;}
+  .timeline{max-width:780px;}
+  .tl-item{
+    display:grid;grid-template-columns:130px 1fr;gap:24px;
+    padding:28px 0;border-top:1px solid var(--line-dark);
+  }
+  .tl-item:last-child{border-bottom:1px solid var(--line-dark);}
+  .tl-date{
+    font-family:'Courier New',monospace;font-size:0.78rem;
+    color:var(--amber-deep);font-weight:700;letter-spacing:0.04em;
+    padding-top:3px;
+  }
+  .tl-role{font-weight:700;font-size:1.05rem;margin-bottom:3px;}
+  .tl-org{color:var(--navy-soft);font-size:0.88rem;margin-bottom:10px;font-style:italic;}
+  .tl-desc{color:#3D4A5C;font-size:0.92rem;line-height:1.6;}
+  .tl-desc ul{margin-top:8px;padding-left:18px;}
+  .tl-desc li{margin-bottom:5px;}
+
+  @media (max-width:600px){
+    .tl-item{grid-template-columns:1fr;gap:6px;}
+  }
+
+  /* ===== DESIGN GALLERY ===== */
+  .gallery{background:var(--navy-deep);color:var(--paper);}
+  .gallery .section-title{color:var(--paper);}
+  .gallery .section-label{color:var(--amber);}
+  .gallery-grid{
+    display:grid;grid-template-columns:1.2fr 1fr 1fr;
+    gap:22px;
+  }
+  .gallery-item{
+    background:var(--navy);
+    border:1px solid var(--line);
+    overflow:hidden;
+    cursor:pointer;
+    position:relative;
+  }
+  .gallery-item img{
+    width:100%;display:block;
+    transition:transform 0.5s ease;
+  }
+  .gallery-item:hover img{transform:scale(1.04);}
+  .gallery-cap{
+    padding:16px 18px;
+    border-top:1px solid var(--line);
+  }
+  .gallery-cap .g-title{font-weight:700;font-size:0.95rem;margin-bottom:4px;}
+  .gallery-cap .g-meta{font-family:'Courier New',monospace;font-size:0.72rem;color:var(--amber);text-transform:uppercase;letter-spacing:0.05em;}
+
+  .gallery-item.tall{grid-row:span 2;}
+
+  @media (max-width:900px){
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+    .gallery-item.tall{grid-row:span 1;}
+  }
+  @media (max-width:600px){
+    .gallery-grid{grid-template-columns:1fr;}
+  }
+
+  /* Lightbox */
+  .lightbox{
+    position:fixed;inset:0;background:rgba(11,27,51,0.94);
+    display:none;align-items:center;justify-content:center;
+    z-index:200;padding:5vw;
+    cursor:zoom-out;
+  }
+  .lightbox.active{display:flex;}
+  .lightbox img{max-width:90vw;max-height:88vh;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,0.5);}
+  .lightbox-close{
+    position:absolute;top:24px;right:5vw;
+    color:var(--paper);font-size:1.6rem;cursor:pointer;
+    font-family:'Courier New',monospace;
+  }
+
+  /* ===== SKILLS ===== */
+  .skills{background:var(--paper);}
+  .skills-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:36px;
+  }
+  .skill-col h4{
+    font-family:'Courier New',monospace;text-transform:uppercase;
+    font-size:0.78rem;letter-spacing:0.08em;color:var(--amber-deep);
+    font-weight:700;margin-bottom:18px;
+    border-bottom:1px solid var(--line-dark);padding-bottom:10px;
+  }
+  .skill-col ul{list-style:none;}
+  .skill-col li{
+    padding:7px 0;font-size:0.93rem;color:var(--ink);
+    display:flex;align-items:center;gap:10px;
+  }
+  .skill-col li::before{content:'';width:6px;height:6px;background:var(--navy-soft);border-radius:50%;flex-shrink:0;}
+
+  @media (max-width:760px){
+    .skills-grid{grid-template-columns:1fr;gap:30px;}
+  }
+
+  /* ===== CERT STRIP ===== */
+  .certs{background:#EFEBE0;}
+  .cert-row{
+    display:flex;gap:28px;align-items:center;flex-wrap:wrap;
+  }
+  .cert-card{
+    display:flex;gap:18px;align-items:center;
+    background:var(--paper);
+    border:1px solid var(--line-dark);
+    padding:18px 22px;
+    flex:1;min-width:280px;
+  }
+  .cert-card img{width:74px;height:42px;object-fit:cover;border:1px solid var(--line-dark);}
+  .cert-card .c-name{font-weight:700;font-size:0.92rem;margin-bottom:3px;}
+  .cert-card .c-meta{font-family:'Courier New',monospace;font-size:0.74rem;color:var(--navy-soft);text-transform:uppercase;}
+
+  /* ===== CONTACT ===== */
+  .contact{
+    background:var(--navy-deep);color:var(--paper);
+    text-align:left;
+  }
+  .contact .section-title{color:var(--paper);max-width:none;}
+  .contact-grid{
+    display:grid;grid-template-columns:1.3fr 1fr;gap:60px;
+    align-items:start;
+  }
+  .contact-lead{font-size:1.1rem;line-height:1.65;color:#C9D2DE;max-width:480px;margin-bottom:34px;}
+  .contact-list{list-style:none;}
+  .contact-list li{
+    border-top:1px solid var(--line);padding:18px 0;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .contact-list li:last-child{border-bottom:1px solid var(--line);}
+  .contact-list .c-label{font-family:'Courier New',monospace;font-size:0.74rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--amber);}
+  .contact-list a:hover{color:var(--amber);}
+
+  .referee-card{
+    background:var(--navy);border:1px solid var(--line);padding:24px;margin-bottom:14px;
+  }
+  .referee-card .r-name{font-weight:700;margin-bottom:3px;}
+  .referee-card .r-role{font-size:0.85rem;color:#9FB0C5;margin-bottom:10px;}
+  .referee-card .r-contact{font-family:'Courier New',monospace;font-size:0.78rem;color:var(--amber);}
+
+  @media (max-width:800px){
+    .contact-grid{grid-template-columns:1fr;gap:36px;}
+  }
+
+  footer{
+    background:var(--navy-deep);color:#7E8CA0;
+    padding:24px 5vw 34px;
+    font-size:0.78rem;
+    border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  }
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease, transform 0.7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    .hero-sub,.hero h1,.hero-ctas,.ticket-strip{opacity:1;animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">CHERYL <span>ACHIENG</span></div>
+  <nav>
+    <ul>
+     
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#design">Design Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-inner">
+
+        <div class="hero-content">
+
+            <h1>I keep systems<br>running, <em>and</em><br>make them<br>look good.</h1>
+
+            <p class="hero-sub">
+                ICT support professional who also designs, from
+                resolving hardware tickets to building campaign
+                graphics for a national hospital. Based in Kenya,
+                open to internships and roles across both lanes.
+            </p>
+
+            <div class="hero-ctas">
+                <a href="#contact" class="btn btn-outline">Get in touch</a>
+            </div>
+
+        </div>
+
+        <div class="hero-image">
+            <img src="images/codegirl.jpg" alt="Cheryl's illustrated portrait">
+        </div>
+
+    </div>
+
+    <div class="scroll-cue">
+        <span class="line"></span> SCROLL
+    </div>
+
+</section>
+
+<section class="paths" id="paths">
+  <span class="section-label">Two Lanes, One Person</span>
+ 
+  <div class="path-grid reveal">
+    <div class="path-card">
+      <span class="path-tag">Lane 01</span>
+      <h3>ICT Support</h3>
+      <p>Diagnosing hardware, software and network issues to keep teams working. Comfortable being the
+      first call when something breaks.</p>
+      <ul class="path-list">
+        <li><span>Hardware & software troubleshooting</span><span class="dot">●</span></li>
+        <li><span>Network setup & diagnostics</span><span class="dot">●</span></li>
+        <li><span>Helpdesk / end-user support</span><span class="dot">●</span></li>
+        <li><span>Data entry & systems accuracy</span><span class="dot">●</span></li>
+      </ul>
+    </div>
+    <div class="path-card">
+      <span class="path-tag">Lane 02</span>
+      <h3>Graphic Design & UI/Ux software developer</h3>
+      <p>Turning announcements, webinars and campaigns into visuals people actually stop to look at.</p>
+      <ul class="path-list">
+        <li><span>Adobe Illustrator, Photoshop</span><span class="dot">●</span></li>
+        <li><span>Event & webinar promotional design</span><span class="dot">●</span></li>
+        <li><span>Brand-consistent layout work</span><span class="dot">●</span></li>
+        <li><span>Figma , canva</span><span class="dot">●</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="experience" id="experience">
+  <span class="section-label">Work Log</span>
+  <h2 class="section-title reveal">Where the experience comes from</h2>
+  <div class="timeline reveal">
+
+    <div class="tl-item">
+      <div class="tl-date">FEB – MAY<br>2025</div>
+      <div>
+        <div class="tl-role">ICT & Digital Support Attaché</div>
+        <div class="tl-org">Kenyatta University Teaching, Referral & Research Hospital (KUTRRH)</div>
+        <div class="tl-desc">
+          <ul>
+            <li>Delivered ICT support across staff, diagnosing and resolving hardware, software and connectivity issues to keep operations running</li>
+            <li>Designed promotional and informational graphics for hospital programmes, including admissions and departmental webinar campaigns</li>
+            <li>Contributed to graphics design and branding using Canva and Adobe Illustrator</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+   
+
+    <div class="tl-item">
+      <div class="tl-date">OCT 2021 –<br>APR 2023</div>
+      <div>
+        <div class="tl-role">Customer Service Associate (Remote)</div>
+        <div class="tl-org">Cloud Factory Kenya</div>
+        <div class="tl-desc">
+          <ul>
+            <li>Managed high-volume customer interactions across digital platform with timely, professional resolution</li>
+            <li>Resolved complaints efficiently and escalated complex matters where necessary while maintaining case ownership.</li>
+            <li>Built positive client relationships through professional communication and effective issue resolution, contributing to customer satisfaction and service efficiency.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">AUG 2020 –<br>OCT 2021</div>
+      <div>
+        <div class="tl-role">Data Entry Specialist (Remote)</div>
+        <div class="tl-org">Cloud Factory Kenya</div>
+        <div class="tl-desc">
+          <ul>
+            <li>Verified and processed invoices with high accuracy</li>
+            <li>Conducted quality control checks to identify and correct discrepancies before submission</li>
+            <li>Entered and updated large volumes of data across internal systems while ensuring completeness and consistency.</li>
+    
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">OCT 2018 –<br>MAR 2019</div>
+      <div>
+        <div class="tl-role">Junior developer Intern </div>
+        <div class="tl-org">Lixnet Technologies Limited</div>
+        <div class="tl-desc">
+          <ul>
+            <li>Worked within an agile team to design, develop and test web and desktop applications using PHP (Laravel) and Java</li>
+            <li>Assisted in collecting and documenting user requirements and user stories</li>
+            <li>Took part in peer reviews, bug troubleshooting and version control via GitLab</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="gallery" id="design">
+  <span class="section-label">Selected Design Work</span>
+  <h2 class="section-title reveal">Campaign graphics, built for a real audience</h2>
+  <div class="gallery-grid reveal">
+
+    <div class="gallery-item tall" data-full="images/kutrrh-admission.jpg">
+      <img src="images/kutrrh-admission.jpg" alt="KUTRRH Open for Admission 2025 poster">
+      <div class="gallery-cap">
+        <div class="g-title">Open for Admission — 2025</div>
+        <div class="g-meta">Poster · Higher National Diploma Programmes</div>
+      </div>
+    </div>
+
+    <div class="gallery-item" data-full="images/kutrrh-webinar-obesity.jpg">
+      <img src="images/kutrrh-webinar-obesity.jpg" alt="KUTRRH childhood obesity webinar poster">
+      <div class="gallery-cap">
+        <div class="g-title">Childhood Obesity & Nutrition</div>
+        <div class="g-meta">Webinar Memo · Nutrition & Dietetics Dept.</div>
+      </div>
+    </div>
+
+    <div class="gallery-item" data-full="images/kutrrh-webinar-pcos.jpg">
+      <img src="images/kutrrh-webinar-pcos.jpg" alt="KUTRRH PCOS and nutrition webinar poster">
+      <div class="gallery-cap">
+        <div class="g-title">PCOS & Nutrition</div>
+        <div class="g-meta">Webinar Memo · Nutrition & Dietetics Dept.</div>
+      </div>
+    </div>
+
+
+    <div class="gallery-item tall" data-full="images/project-dekut-web.jpg">
+      <img src="images/project-dekut-web.jpg" alt="DeKUT AI Assistant landing page">
+      <div class="gallery-cap">
+        <div class="g-title">DeKUT AI Assistant — Web App</div>
+        <div class="g-meta">Built Project · AI Chatbot Landing Page</div>
+      </div>
+    </div>
+
+    <div class="gallery-item" data-full="images/project-dekut-chat.jpg">
+      <img src="images/project-dekut-chat.jpg" alt="DeKUT AI Assistant chatbot interface">
+      <div class="gallery-cap">
+        <div class="g-title">DeKUT AI Assistant — Chat UI</div>
+        <div class="g-meta">Built Project ·Using  Rag system</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="skills" id="skills">
+  <span class="section-label">Toolkit</span>
+  <h2 class="section-title reveal">What I actually work with</h2>
+  <div class="skills-grid reveal">
+    <div class="skill-col">
+      <h4>Design</h4>
+      <ul>
+        <li>Adobe Photoshop</li>
+        <li>Adobe Illustrator</li>
+        <li>Canva</li>
+        <li>Figma</li>
+      </ul>
+    </div>
+    <div class="skill-col">
+      <h4>ICT Support</h4>
+      <ul>
+        <li>Hardware diagnostics & repair</li>
+        <li>Software troubleshooting</li>
+        <li>Network setup & diagnostics</li>
+        <li>Microsoft Office Suite</li>
+      </ul>
+    </div>
+    <div class="skill-col">
+      <h4>Technical / Other</h4>
+      <ul>
+        <li>HTML, CSS, JavaScript, Bootstrap</li>
+        <li>PHP (Laravel), Java basics</li>
+        <li>Version control (GitLab)</li>
+        <li>Data entry & QA processes</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="certs">
+  <span class="section-label">Certifications</span>
+  <h2 class="section-title reveal">Credentials on file</h2>
+  <div class="cert-row reveal">
+    <div class="cert-card">
+      <img src="images/cert-alx.jpg" alt="ALX AI Career Essentials certificate">
+      <div>
+        <div class="c-name">AI Career Essentials</div>
+        <div class="c-meta">ALX · Issued Aug 2024</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <img src="images/" alt="BBIT certificate 2026.">
+      <div>
+        <div class="c-name">BBIT</div>
+        <div class="c-meta">Dedan Kimathi University of Technology · Jun 2026</div>
+      </div>
+    </div>
+    <div class="cert-card">
+     <img src="images/" alt="Dip certification 2019.">
+      <div>
+        <div class="c-name">Diploma, Business & IT</div>
+        <div class="c-meta">Institute of Advanced Technology · 2019</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <span class="section-label">Get In Touch</span>
+  <h2 class="section-title reveal">Open to internships, contracts, and full-time roles</h2>
+  <div class="contact-grid reveal">
+    <div>
+      <p class="contact-lead">Whether you need someone to keep your systems running or your campaigns
+      looking sharp — or both — I'm based in Nairobi and ready to start.</p>
+      <ul class="contact-list">
+        <li><span class="c-label">Email</span><a href="mailto:cherylachieng05@gmail.com">cherylachieng05@gmail.com</a></li>
+        <li><span class="c-label">Phone</span><a href="tel:+254798406584">+254 798 406 584</a></li>
+        <li><span class="c-label">LinkedIn</span><a href="https://linkedin.com/in/cheryl-achieng-417132203" target="_blank">linkedin.com/in/cheryl-achieng</a></li>
+        <li><span class="c-label">Location</span><span>Nairobi, Kenya</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="referee-card">
+        <div class="r-name">Mr. Willington Mwachia</div>
+        <div class="r-role">Supervisor, KUTTRH</div>
+        <div class="r-contact">0795 315 138</div>
+      </div>
+      <div class="referee-card">
+        <div class="r-name">Mrs. Lisa Shikuku</div>
+        <div class="r-role">Team Lead, Cloud Factory Kenya</div>
+        <div class="r-contact">0701 620 260</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Cheryl Achieng </span>
+
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightboxClose">[ ESC TO CLOSE ]</span>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); }
+    });
+  }, {threshold:0.12});
+  reveals.forEach(el=>obs.observe(el));
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  document.querySelectorAll('.gallery-item').forEach(item=>{
+    item.addEventListener('click', ()=>{
+      const src = item.querySelector('img').getAttribute('src');
+      lightboxImg.setAttribute('src', src);
+      lightbox.classList.add('active');
+    });
+  });
+  function closeLightbox(){ lightbox.classList.remove('active'); lightboxImg.setAttribute('src',''); }
+  lightbox.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLightbox(); });
+</script>
+
+</body>
+</html>
