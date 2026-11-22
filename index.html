@@ -4,747 +4,214 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cheryl Achieng — portfolio</title>
+<meta name="description" content="Cheryl Achieng — ICT support professional and graphic designer based in Nairobi, Kenya.  open to internships and roles.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230B1B33'/%3E%3Ctext x='50' y='66' font-size='52' font-family='Georgia,serif' font-weight='700' text-anchor='middle' fill='%23E8A53D'%3ECA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --navy-deep:#0B1B33;
-    --navy:#102A4C;
-    --navy-soft:#1C3A63;
-    --paper:#F6F3EC;
-    --amber:#E8A53D;
-    --amber-deep:#C9851F;
-    --ink:#16202E;
-    --line:rgba(255,255,255,0.14);
-    --line-dark:rgba(16,32,46,0.12);
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'IBM Plex Sans', Arial, sans-serif;
-    overflow-x:hidden;
-  }
-  @font-face{font-family:'fallback';}
-
-  ::selection{background:var(--amber);color:var(--navy-deep);}
-
-  a{color:inherit;text-decoration:none;}
-
-  .display{
-    font-family: Georgia, 'Times New Roman', serif;
-    letter-spacing:-0.01em;
-  }
-  .mono{
-    font-family: 'Courier New', monospace;
-    letter-spacing:0.02em;
-  }
-
-  /* ===== NAV ===== */
-  header{
-    position:fixed;top:0;left:0;right:0;z-index:100;
-    display:flex;justify-content:space-between;align-items:center;
-    padding:18px 5vw;
-    background:rgba(246,243,236,0.88);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line-dark);
-  }
-  .logo{
-    font-family:Georgia,serif;font-weight:700;font-size:1.15rem;
-    letter-spacing:0.02em;
-  }
-  .logo span{color:var(--amber-deep);}
-  nav ul{display:flex;gap:28px;list-style:none;}
-  nav a{
-    font-size:0.82rem;text-transform:uppercase;letter-spacing:0.08em;
-    font-weight:600;color:var(--navy);
-    border-bottom:2px solid transparent;
-    padding-bottom:4px;
-    transition:border-color 0.2s;
-  }
-  nav a:hover{border-color:var(--amber-deep);}
-  .nav-toggle{display:none;}
-
-  @media (max-width:760px){
-    nav ul{gap:16px;}
-    nav a{font-size:0.7rem;}
-  }
-
-  section{padding:120px 5vw 90px;position:relative;}
-
-  /* ===== HERO ===== */
-  .hero{
-    min-height:100vh;
-    display:flex;flex-direction:column;justify-content:center;
-    background:var(--navy-deep);
-    color:var(--paper);
-    padding-top:140px;
-    position:relative;
-    overflow:hidden;
-  }
-  .hero::before{
-    content:'';position:absolute;inset:0;
-    background-image:
-      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.035) 40px),
-      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.035) 40px);
-    pointer-events:none;
-  }
-  /* ===== HERO IMAGE ===== */
-
-.hero-inner {
-    display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    align-items: center;
-    gap: 40px;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-}
-
-.hero-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.hero-image img {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    object-fit: contain;
-    display: block;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 760px) {
-    .hero-inner {
-        grid-template-columns: 1fr;
-        text-align: left;
-    }
-
-    .hero-image img {
-        max-width: 400px;
-    }
-
-    .hero {
-        padding-top: 120px;
-    }
-}
-  .ticket-strip{
-    font-family:'Courier New',monospace;
-    font-size:0.78rem;
-    color:var(--amber);
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-    display:flex;gap:18px;flex-wrap:wrap;
-    margin-bottom:28px;
-    opacity:0;
-    animation:fadeUp 0.7s ease forwards;
-    animation-delay:0.1s;
-  }
-  .ticket-strip span{opacity:0.85;}
-  .ticket-strip span::before{content:'▸ ';color:var(--amber-deep);}
-
-  .hero h1{
-    font-size:clamp(2.6rem, 7vw, 5.6rem);
-    line-height:0.98;
-    font-weight:700;
-    max-width:920px;
-    opacity:0;
-    animation:fadeUp 0.8s ease forwards;
-    animation-delay:0.25s;
-  }
-  .hero h1 em{
-    font-style:italic;color:var(--amber);
-    font-weight:400;
-  }
-  .hero-sub{
-    margin-top:26px;
-    font-size:1.05rem;
-    max-width:560px;
-    color:#C9D2DE;
-    line-height:1.6;
-    opacity:0;
-    animation:fadeUp 0.8s ease forwards;
-    animation-delay:0.4s;
-  }
-  .hero-ctas{
-    margin-top:42px;
-    display:flex;gap:16px;flex-wrap:wrap;
-    opacity:0;
-    animation:fadeUp 0.8s ease forwards;
-    animation-delay:0.55s;
-  }
-  .btn{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:13px 26px;
-    font-size:0.85rem;font-weight:600;
-    text-transform:uppercase;letter-spacing:0.06em;
-    border-radius:2px;
-    transition:transform 0.2s, box-shadow 0.2s;
-    cursor:pointer;
-    border:1.5px solid transparent;
-  }
-  .btn:hover{transform:translateY(-2px);}
-  .btn-amber{background:var(--amber);color:var(--navy-deep);}
-  .btn-amber:hover{box-shadow:0 8px 24px rgba(232,165,61,0.35);}
-  .btn-outline{border-color:rgba(246,243,236,0.4);color:var(--paper);}
-  .btn-outline:hover{border-color:var(--amber);color:var(--amber);}
-
-  @keyframes fadeUp{
-    from{opacity:0;transform:translateY(18px);}
-    to{opacity:1;transform:translateY(0);}
-  }
-
-  .scroll-cue{
-    position:absolute;bottom:34px;left:5vw;
-    font-family:'Courier New',monospace;font-size:0.72rem;
-    color:rgba(246,243,236,0.5);letter-spacing:0.1em;
-    text-transform:uppercase;
-    display:flex;align-items:center;gap:10px;
-  }
-  .scroll-cue .line{width:36px;height:1px;background:rgba(246,243,236,0.4);animation:pulse 2s infinite;}
-  @keyframes pulse{0%,100%{opacity:0.4;}50%{opacity:1;}}
-
-  /* ===== PATHS / DUALITY SECTION ===== */
-  .paths{
-    background:var(--paper);
-  }
-  .section-label{
-    font-family:'Courier New',monospace;
-    font-size:0.78rem;text-transform:uppercase;letter-spacing:0.14em;
-    color:var(--amber-deep);font-weight:700;
-    margin-bottom:14px;
-    display:block;
-  }
-  .section-title{
-    font-family:Georgia,serif;font-size:clamp(1.8rem,3.6vw,2.6rem);
-    font-weight:700;margin-bottom:50px;max-width:680px;
-    line-height:1.15;
-  }
-
-  .path-grid{
-    display:grid;grid-template-columns:1fr 1fr;gap:0;
-    border:1px solid var(--line-dark);
-  }
-  .path-card{
-    padding:46px 38px;
-    position:relative;
-    transition:background 0.3s;
-  }
-  .path-card:first-child{border-right:1px solid var(--line-dark);}
-  .path-card:hover{background:rgba(16,42,76,0.03);}
-  .path-tag{
-    font-family:'Courier New',monospace;font-size:0.72rem;
-    text-transform:uppercase;letter-spacing:0.1em;
-    color:var(--navy-soft);font-weight:700;
-    margin-bottom:18px;display:inline-block;
-    padding:5px 10px;border:1px solid var(--navy-soft);
-  }
-  .path-card h3{
-    font-family:Georgia,serif;font-size:1.5rem;margin-bottom:14px;
-  }
-  .path-card p{
-    color:#3D4A5C;line-height:1.65;font-size:0.95rem;margin-bottom:22px;
-  }
-  .path-list{list-style:none;font-size:0.88rem;}
-  .path-list li{
-    padding:8px 0;border-top:1px solid var(--line-dark);
-    display:flex;justify-content:space-between;color:#3D4A5C;
-  }
-  .path-list li:last-child{border-bottom:1px solid var(--line-dark);}
-  .path-list .dot{color:var(--amber-deep);}
-
-  @media (max-width:760px){
-    .path-grid{grid-template-columns:1fr;}
-    .path-card:first-child{border-right:none;border-bottom:1px solid var(--line-dark);}
-  }
-
-  /* ===== EXPERIENCE ===== */
-  .experience{background:#EFEBE0;}
-  .timeline{max-width:780px;}
-  .tl-item{
-    display:grid;grid-template-columns:130px 1fr;gap:24px;
-    padding:28px 0;border-top:1px solid var(--line-dark);
-  }
-  .tl-item:last-child{border-bottom:1px solid var(--line-dark);}
-  .tl-date{
-    font-family:'Courier New',monospace;font-size:0.78rem;
-    color:var(--amber-deep);font-weight:700;letter-spacing:0.04em;
-    padding-top:3px;
-  }
-  .tl-role{font-weight:700;font-size:1.05rem;margin-bottom:3px;}
-  .tl-org{color:var(--navy-soft);font-size:0.88rem;margin-bottom:10px;font-style:italic;}
-  .tl-desc{color:#3D4A5C;font-size:0.92rem;line-height:1.6;}
-  .tl-desc ul{margin-top:8px;padding-left:18px;}
-  .tl-desc li{margin-bottom:5px;}
-
-  @media (max-width:600px){
-    .tl-item{grid-template-columns:1fr;gap:6px;}
-  }
-
-  /* ===== DESIGN GALLERY ===== */
-  .gallery{background:var(--navy-deep);color:var(--paper);}
-  .gallery .section-title{color:var(--paper);}
-  .gallery .section-label{color:var(--amber);}
-  .gallery-grid{
-    display:grid;grid-template-columns:1.2fr 1fr 1fr;
-    gap:22px;
-  }
-  .gallery-item{
-    background:var(--navy);
-    border:1px solid var(--line);
-    overflow:hidden;
-    cursor:pointer;
-    position:relative;
-  }
-  .gallery-item img{
-    width:100%;display:block;
-    transition:transform 0.5s ease;
-  }
-  .gallery-item:hover img{transform:scale(1.04);}
-  .gallery-cap{
-    padding:16px 18px;
-    border-top:1px solid var(--line);
-  }
-  .gallery-cap .g-title{font-weight:700;font-size:0.95rem;margin-bottom:4px;}
-  .gallery-cap .g-meta{font-family:'Courier New',monospace;font-size:0.72rem;color:var(--amber);text-transform:uppercase;letter-spacing:0.05em;}
-
-  .gallery-item.tall{grid-row:span 2;}
-
-  @media (max-width:900px){
-    .gallery-grid{grid-template-columns:1fr 1fr;}
-    .gallery-item.tall{grid-row:span 1;}
-  }
-  @media (max-width:600px){
-    .gallery-grid{grid-template-columns:1fr;}
-  }
-
-  /* Lightbox */
-  .lightbox{
-    position:fixed;inset:0;background:rgba(11,27,51,0.94);
-    display:none;align-items:center;justify-content:center;
-    z-index:200;padding:5vw;
-    cursor:zoom-out;
-  }
-  .lightbox.active{display:flex;}
-  .lightbox img{max-width:90vw;max-height:88vh;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,0.5);}
-  .lightbox-close{
-    position:absolute;top:24px;right:5vw;
-    color:var(--paper);font-size:1.6rem;cursor:pointer;
-    font-family:'Courier New',monospace;
-  }
-
-  /* ===== SKILLS ===== */
-  .skills{background:var(--paper);}
-  .skills-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:36px;
-  }
-  .skill-col h4{
-    font-family:'Courier New',monospace;text-transform:uppercase;
-    font-size:0.78rem;letter-spacing:0.08em;color:var(--amber-deep);
-    font-weight:700;margin-bottom:18px;
-    border-bottom:1px solid var(--line-dark);padding-bottom:10px;
-  }
-  .skill-col ul{list-style:none;}
-  .skill-col li{
-    padding:7px 0;font-size:0.93rem;color:var(--ink);
-    display:flex;align-items:center;gap:10px;
-  }
-  .skill-col li::before{content:'';width:6px;height:6px;background:var(--navy-soft);border-radius:50%;flex-shrink:0;}
-
-  @media (max-width:760px){
-    .skills-grid{grid-template-columns:1fr;gap:30px;}
-  }
-
-  /* ===== CERT STRIP ===== */
-  .certs{background:#EFEBE0;}
-  .cert-row{
-    display:flex;gap:28px;align-items:center;flex-wrap:wrap;
-  }
-  .cert-card{
-    display:flex;gap:18px;align-items:center;
-    background:var(--paper);
-    border:1px solid var(--line-dark);
-    padding:18px 22px;
-    flex:1;min-width:280px;
-  }
-  .cert-card img{width:74px;height:42px;object-fit:cover;border:1px solid var(--line-dark);}
-  .cert-card .c-name{font-weight:700;font-size:0.92rem;margin-bottom:3px;}
-  .cert-card .c-meta{font-family:'Courier New',monospace;font-size:0.74rem;color:var(--navy-soft);text-transform:uppercase;}
-
-  /* ===== CONTACT ===== */
-  .contact{
-    background:var(--navy-deep);color:var(--paper);
-    text-align:left;
-  }
-  .contact .section-title{color:var(--paper);max-width:none;}
-  .contact-grid{
-    display:grid;grid-template-columns:1.3fr 1fr;gap:60px;
-    align-items:start;
-  }
-  .contact-lead{font-size:1.1rem;line-height:1.65;color:#C9D2DE;max-width:480px;margin-bottom:34px;}
-  .contact-list{list-style:none;}
-  .contact-list li{
-    border-top:1px solid var(--line);padding:18px 0;
-    display:flex;justify-content:space-between;align-items:center;
-  }
-  .contact-list li:last-child{border-bottom:1px solid var(--line);}
-  .contact-list .c-label{font-family:'Courier New',monospace;font-size:0.74rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--amber);}
-  .contact-list a:hover{color:var(--amber);}
-
-  .referee-card{
-    background:var(--navy);border:1px solid var(--line);padding:24px;margin-bottom:14px;
-  }
-  .referee-card .r-name{font-weight:700;margin-bottom:3px;}
-  .referee-card .r-role{font-size:0.85rem;color:#9FB0C5;margin-bottom:10px;}
-  .referee-card .r-contact{font-family:'Courier New',monospace;font-size:0.78rem;color:var(--amber);}
-
-  @media (max-width:800px){
-    .contact-grid{grid-template-columns:1fr;gap:36px;}
-  }
-
-  footer{
-    background:var(--navy-deep);color:#7E8CA0;
-    padding:24px 5vw 34px;
-    font-size:0.78rem;
-    border-top:1px solid var(--line);
-    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
-  }
-
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease, transform 0.7s ease;}
-  .reveal.in{opacity:1;transform:translateY(0);}
-
-  @media (prefers-reduced-motion: reduce){
-    .reveal{opacity:1;transform:none;transition:none;}
-    .hero-sub,.hero h1,.hero-ctas,.ticket-strip{opacity:1;animation:none;}
-  }
+:root{--deep:#0B1B33;--navy:#102A4C;--soft:#1C3A63;--paper:#F6F3EC;--card:#fff;--amber:#E8A53D;--amber-d:#B87612;--ink:#16202E;--mute:#5B6676;--line:rgba(16,32,46,.12);--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{background:var(--paper);color:var(--ink);font:400 1rem/1.65 Inter,system-ui,Arial,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}ul{list-style:none}
+::selection{background:var(--amber);color:var(--deep)}
+.serif{font-family:Fraunces,Georgia,serif}
+section{padding:96px 6vw}
+.wrap{max-width:1120px;margin:0 auto}
+.label{display:inline-block;font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--amber-d);margin-bottom:12px}
+h2{font:700 clamp(1.8rem,3.6vw,2.6rem)/1.15 Fraunces,Georgia,serif;margin-bottom:44px;max-width:680px}
+/* nav */
+header{position:fixed;inset:0 0 auto;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px 6vw;background:rgba(246,243,236,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo{font:700 1.1rem Fraunces,Georgia,serif;letter-spacing:.03em}.logo span{color:var(--amber-d)}
+nav ul{display:flex;gap:26px}
+nav a{font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);padding-bottom:4px;border-bottom:2px solid transparent;transition:.2s}
+nav a:hover{border-color:var(--amber-d)}
+/* hero */
+.hero{background:radial-gradient(900px 500px at 85% 20%,rgba(232,165,61,.16),transparent 60%),var(--deep);color:var(--paper);padding-top:130px;min-height:100vh;display:flex;align-items:center}
+.hero-in{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.chips span{font-size:.75rem;font-weight:500;padding:6px 13px;border:1px solid rgba(246,243,236,.25);border-radius:99px;color:#D5DDE8}
+.hero h1{font:700 clamp(2.5rem,6vw,4.8rem)/1.02 Fraunces,Georgia,serif}
+.hero h1 em{color:var(--amber);font-weight:400}
+.hero p{margin-top:24px;max-width:540px;color:#C9D2DE;font-size:1.06rem}
+.btns{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 26px;border-radius:99px;font-size:.84rem;font-weight:600;letter-spacing:.04em;transition:.2s;border:1.5px solid transparent}
+.btn:hover{transform:translateY(-2px)}
+.btn-a{background:var(--amber);color:var(--deep)}.btn-a:hover{box-shadow:0 10px 26px rgba(232,165,61,.35)}
+.btn-o{border-color:rgba(246,243,236,.4)}.btn-o:hover{border-color:var(--amber);color:var(--amber)}
+.portrait{justify-self:center;width:min(100%,380px);aspect-ratio:4/5;border-radius:200px 200px 24px 24px;overflow:hidden;border:6px solid rgba(246,243,236,.12);box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
+/* lanes */
+.lanes{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.lane{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:38px 34px;transition:.25s}
+.lane:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(16,32,46,.1)}
+.lane small{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.lane h3{font:700 1.6rem/1.2 Fraunces,Georgia,serif;margin:8px 0 12px}
+.lane p{color:var(--mute);margin-bottom:20px}
+.lane li{padding:11px 0;border-top:1px solid var(--line);font-size:.95rem;display:flex;gap:10px}
+.lane li::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--amber);margin-top:9px;flex:none}
+/* timeline */
+.exp{background:var(--deep);color:var(--paper)}
+.exp .label{color:var(--amber)}
+.tl{position:relative;max-width:860px}
+.tl::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:rgba(246,243,236,.16)}
+.job{position:relative;padding:0 0 38px 40px}
+.job::before{content:'';position:absolute;left:0;top:7px;width:16px;height:16px;border-radius:50%;background:var(--deep);border:3px solid var(--amber)}
+.date{font-size:.76rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
+.role{font:700 1.3rem/1.3 Fraunces,Georgia,serif;margin:4px 0 2px}
+.org{color:#9FB0C5;font-size:.95rem;margin-bottom:12px}
+.job li{color:#D5DDE8;font-size:.95rem;padding:3px 0 3px 18px;position:relative}
+.job li::before{content:'›';position:absolute;left:0;color:var(--amber)}
+/* gallery */
+.gal{columns:3;column-gap:20px}
+.shot{break-inside:avoid;margin-bottom:20px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;cursor:zoom-in;transition:.25s}
+.shot:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(16,32,46,.12)}
+.shot img{width:100%;display:block}
+.shot div{padding:14px 18px 16px}
+.shot b{display:block;font-size:.96rem}.shot span{font-size:.8rem;color:var(--mute)}
+/* skills */
+.skills{background:#EDE8DC}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.col{background:var(--card);border-radius:var(--r);padding:30px;border:1px solid var(--line)}
+.col h4{font:700 1.15rem Fraunces,Georgia,serif;margin-bottom:14px;color:var(--navy)}
+.col li{display:inline-block;margin:0 6px 8px 0;padding:6px 13px;font-size:.85rem;background:var(--paper);border:1px solid var(--line);border-radius:99px}
+/* certs */
+.certs-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.cert{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.cert img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top;display:block;cursor:zoom-in;border-bottom:1px solid var(--line)}
+.cert div{padding:16px 20px 20px}.cert b{display:block}.cert span{font-size:.83rem;color:var(--mute)}
+/* contact */
+.contact{background:var(--navy);color:var(--paper)}.contact .label{color:var(--amber)}
+.cgrid{display:grid;grid-template-columns:1.2fr 1fr;gap:48px}
+.cgrid p{color:#C9D2DE;font-size:1.05rem;margin-bottom:26px}
+.clist li{display:flex;gap:18px;padding:13px 0;border-top:1px solid rgba(246,243,236,.14)}
+.clist em{font-style:normal;width:80px;flex:none;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);padding-top:3px}
+.clist a:hover{color:var(--amber)}
+.refs{align-self:start;border:1px solid rgba(246,243,236,.2);border-radius:var(--r);padding:28px}
+.refs b{font:700 1.2rem Fraunces,Georgia,serif}.refs span{display:block;color:#9FB0C5;margin-top:6px;font-size:.92rem}
+footer{background:var(--deep);color:#7F90A8;text-align:center;padding:26px;font-size:.82rem}
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:200;background:rgba(5,12,24,.92);display:none;align-items:center;justify-content:center;padding:4vh 4vw;cursor:zoom-out}
+.lb.on{display:flex}.lb img{max-width:100%;max-height:92vh;border-radius:8px}
+.lb span{position:absolute;top:18px;right:24px;color:#aab6c7;font-size:.75rem;letter-spacing:.1em}
+/* motion */
+.rv{opacity:0;transform:translateY(20px);transition:.7s ease}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media(max-width:900px){.hero-in,.lanes,.cgrid,.cols,.certs-row{grid-template-columns:1fr}.gal{columns:2}.portrait{width:min(100%,300px)}.hero{padding-top:110px}}
+@media(max-width:560px){.gal{columns:1}nav ul{gap:14px}nav a{font-size:.68rem}section{padding:72px 6vw}}
 </style>
 </head>
 <body>
-
 <header>
   <div class="logo">CHERYL <span>ACHIENG</span></div>
-  <nav>
-    <ul>
-     
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#design">Design Work</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <nav><ul>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#design">Design Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul></nav>
 </header>
 
+<section class="hero"><div class="wrap hero-in">
+  <div>
+    <h1>I keep systems running, <em>and</em> make them look good.</h1>
+    <p>ICT support professional who also designs, from resolving hardware tickets to building campaign graphics for a national hospital. open to internships and roles across both lanes.</p>
+    <div class="btns"><a href="#contact" class="btn btn-a">Get in touch</a><a href="#experience" class="btn btn-o">See my experience</a></div>
+  </div>
+  <div class="portrait"><img src="images/codegirl.jpg" alt="Cheryl's illustrated portrait"></div>
+</div></section>
 
-<section class="hero">
-
-    <div class="hero-inner">
-
-        <div class="hero-content">
-
-            <h1>I keep systems<br>running, <em>and</em><br>make them<br>look good.</h1>
-
-            <p class="hero-sub">
-                ICT support professional who also designs, from
-                resolving hardware tickets to building campaign
-                graphics for a national hospital. Based in Kenya,
-                open to internships and roles across both lanes.
-            </p>
-
-            <div class="hero-ctas">
-                <a href="#contact" class="btn btn-outline">Get in touch</a>
-            </div>
-
-        </div>
-
-        <div class="hero-image">
-            <img src="images/codegirl.jpg" alt="Cheryl's illustrated portrait">
-        </div>
-
+<section><div class="wrap">
+  <span class="label">Two Lanes, One Person</span>
+  <div class="lanes rv">
+    <div class="lane">
+      <small>Lane 01</small><h3>ICT Support</h3>
+      <p>Diagnosing hardware, software and network issues to keep teams working. Comfortable being the first call when something breaks.</p>
+      <ul><li>Hardware &amp; software troubleshooting</li><li>Network setup &amp; diagnostics</li><li>Helpdesk / end-user support</li><li>Data entry &amp; systems accuracy</li></ul>
     </div>
-
-    <div class="scroll-cue">
-        <span class="line"></span> SCROLL
-    </div>
-
-</section>
-
-<section class="paths" id="paths">
-  <span class="section-label">Two Lanes, One Person</span>
- 
-  <div class="path-grid reveal">
-    <div class="path-card">
-      <span class="path-tag">Lane 01</span>
-      <h3>ICT Support</h3>
-      <p>Diagnosing hardware, software and network issues to keep teams working. Comfortable being the
-      first call when something breaks.</p>
-      <ul class="path-list">
-        <li><span>Hardware & software troubleshooting</span><span class="dot">●</span></li>
-        <li><span>Network setup & diagnostics</span><span class="dot">●</span></li>
-        <li><span>Helpdesk / end-user support</span><span class="dot">●</span></li>
-        <li><span>Data entry & systems accuracy</span><span class="dot">●</span></li>
-      </ul>
-    </div>
-    <div class="path-card">
-      <span class="path-tag">Lane 02</span>
-      <h3>Graphic Design & UI/Ux software developer</h3>
+    <div class="lane">
+      <small>Lane 02</small><h3>Graphic Design &amp; UI/UX</h3>
       <p>Turning announcements, webinars and campaigns into visuals people actually stop to look at.</p>
-      <ul class="path-list">
-        <li><span>Adobe Illustrator, Photoshop</span><span class="dot">●</span></li>
-        <li><span>Event & webinar promotional design</span><span class="dot">●</span></li>
-        <li><span>Brand-consistent layout work</span><span class="dot">●</span></li>
-        <li><span>Figma , canva</span><span class="dot">●</span></li>
+      <ul><li>Adobe Illustrator, Photoshop</li><li>Event &amp; webinar promotional design</li><li>Brand-consistent layout work</li><li>Figma, Canva</li></ul>
+    </div>
+  </div>
+</div></section>
+
+<section class="exp" id="experience"><div class="wrap">
+  <span class="label">Work Log</span>
+  <h2 class="rv">Where the experience comes from</h2>
+  <div class="tl rv">
+    <div class="job"><div class="date">Feb – May 2025</div><div class="role">ICT &amp; Digital Support Attaché</div><div class="org">Kenyatta University Teaching, Referral &amp; Research Hospital (KUTRRH)</div>
+      <ul><li>Delivered ICT support across staff, diagnosing and resolving hardware, software and connectivity issues to keep operations running</li><li>Designed promotional and informational graphics for hospital programmes, including admissions and departmental webinar campaigns</li><li>Contributed to graphics design and branding using Canva and Adobe Illustrator</li></ul></div>
+    <div class="job"><div class="date">Oct 2021 – Apr 2023</div><div class="role">Customer Service Associate (Remote)</div><div class="org">Cloud Factory Kenya</div>
+      <ul><li>Managed high-volume customer interactions across digital platforms with timely, professional resolution</li><li>Resolved complaints efficiently and escalated complex matters where necessary while maintaining case ownership</li><li>Built positive client relationships through professional communication and effective issue resolution, contributing to customer satisfaction and service efficiency</li></ul></div>
+    <div class="job"><div class="date">Aug 2020 – Oct 2021</div><div class="role">Data Entry Specialist (Remote)</div><div class="org">Cloud Factory Kenya</div>
+      <ul><li>Verified and processed invoices with high accuracy</li><li>Conducted quality control checks to identify and correct discrepancies before submission</li><li>Entered and updated large volumes of data across internal systems while ensuring completeness and consistency</li></ul></div>
+    <div class="job"><div class="date">Jun – Oct 2019</div><div class="role">IT &amp; Accounting Assistant</div><div class="org">Osam Associates</div>
+      <ul><li>Supported financial record management using Microsoft Excel</li><li>Assisted in invoice processing and financial documentation with high accuracy</li><li>Assisted in managing IT systems used for financial record keeping and reporting</li><li>Maintained confidentiality of financial and client information</li></ul></div>
+    <div class="job"><div class="date">Oct 2018 – Mar 2019</div><div class="role">Junior Developer Intern</div><div class="org">Lixnet Technologies Limited</div>
+      <ul><li>Worked within an agile team to design, develop and test web and desktop applications using PHP (Laravel) and Java</li><li>Assisted in collecting and documenting user requirements and user stories</li><li>Took part in peer reviews, bug troubleshooting and version control via GitLab</li></ul></div>
+  </div>
+</div></section>
+
+<section id="design"><div class="wrap">
+  <span class="label">Selected Work</span>
+  <h2 class="rv">Campaign graphics and built projects</h2>
+  <div class="gal rv">
+    <div class="shot"><img src="images/kutrrh-admission.jpg" alt="KUTRRH Open for Admission 2025 poster" loading="lazy"><div><b>Open for Admission — 2025</b><span>Poster · Higher National Diploma Programmes</span></div></div>
+    <div class="shot"><img src="images/kutrrh-webinar-obesity.jpg" alt="KUTRRH childhood obesity webinar poster" loading="lazy"><div><b>Childhood Obesity &amp; Nutrition</b><span>Webinar Memo · Nutrition &amp; Dietetics Dept.</span></div></div>
+    <div class="shot"><img src="images/kutrrh-webinar-pcos.jpg" alt="KUTRRH PCOS and nutrition webinar poster" loading="lazy"><div><b>PCOS &amp; Nutrition</b><span>Webinar Memo · Nutrition &amp; Dietetics Dept.</span></div></div>
+    <div class="shot"><img src="images/project-dekut-web.jpg" alt="DeKUT AI Assistant landing page" loading="lazy"><div><b>DeKUT AI Assistant — Web App</b><span>Built Project · AI Chatbot Landing Page</span></div></div>
+    <div class="shot"><img src="images/project-dekut-chat.jpg" alt="DeKUT AI Assistant chatbot interface" loading="lazy"><div><b>DeKUT AI Assistant — Chat UI</b><span>Built Project · RAG-based AI chatbot</span></div></div>
+  </div>
+</div></section>
+
+<section class="skills" id="skills"><div class="wrap">
+  <span class="label">Toolkit</span>
+  <h2 class="rv">What I actually work with</h2>
+  <div class="cols rv">
+    <div class="col"><h4>Design</h4><ul><li>Adobe Photoshop</li><li>Adobe Illustrator</li><li>Canva</li><li>Figma</li></ul></div>
+    <div class="col"><h4>ICT Support</h4><ul><li>Hardware diagnostics &amp; repair</li><li>Software troubleshooting</li><li>Network setup &amp; diagnostics</li><li>Microsoft Office Suite</li></ul></div>
+    <div class="col"><h4>Technical / Other</h4><ul><li>HTML, CSS, JavaScript, Bootstrap</li><li>PHP (Laravel), Java basics</li><li>Version control (GitLab)</li><li>Data entry &amp; QA processes</li></ul></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="label">Certifications</span>
+  <h2 class="rv">Credentials on file</h2>
+  <div class="certs-row rv">
+    <div class="cert"><img src="images/cert-alx.jpg" alt="ALX AI Career Essentials certificate"><div><b>AI Career Essentials</b><span>ALX · Issued Aug 2024</span></div></div>
+    <div class="cert"><img src="images/copletion.jpg" alt="Letter from the Department of Information Technology, Dedan Kimathi University of Technology, confirming completion of BBIT coursework"><div><b>BBIT — Completion Letter</b><span>Dedan Kimathi University of Technology · Jun 2026</span></div></div>
+    <div class="cert"><img src="images/dip.jpg" alt="Diploma in Business and ICT certificate, Institute of Advanced Technology, 2019"><div><b>Diploma, Business &amp; ICT</b><span>Institute of Advanced Technology · 2019</span></div></div>
+  </div>
+</div></section>
+<section class="contact" id="contact"><div class="wrap">
+  <span class="label">Get In Touch</span>
+  <h2 class="rv">Open to internships, contracts, and full-time roles</h2>
+  <div class="cgrid rv">
+        <div>
+              <p>Whether you need someone to keep your systems running, your campaigns looking sharp, or both, I’m based in Nairobi and ready to start on a remote or hybrid basis.</p>
+      <ul class="clist">
+        <li><em>Email</em><a href="mailto:cherylachieng05@gmail.com">cherylachieng05@gmail.com</a></li>
+        <li><em>Phone</em><a href="tel:+254798406584">+254 798 406 584</a></li>
+        <li><em>LinkedIn</em><a href="https://linkedin.com/in/cheryl-achieng-417132203" target="_blank" rel="noopener">linkedin.com/in/cheryl-achieng</a></li>
+        <li><em>Location</em><span>Nairobi, Kenya</span></li>
       </ul>
     </div>
+    <div class="refs"><b>References</b><span>Available on request .</span></div>
   </div>
-</section>
+</div></section>
+<footer>© 2026 Cheryl Achieng</footer>
 
-<section class="experience" id="experience">
-  <span class="section-label">Work Log</span>
-  <h2 class="section-title reveal">Where the experience comes from</h2>
-  <div class="timeline reveal">
-
-    <div class="tl-item">
-      <div class="tl-date">FEB – MAY<br>2025</div>
-      <div>
-        <div class="tl-role">ICT & Digital Support Attaché</div>
-        <div class="tl-org">Kenyatta University Teaching, Referral & Research Hospital (KUTRRH)</div>
-        <div class="tl-desc">
-          <ul>
-            <li>Delivered ICT support across staff, diagnosing and resolving hardware, software and connectivity issues to keep operations running</li>
-            <li>Designed promotional and informational graphics for hospital programmes, including admissions and departmental webinar campaigns</li>
-            <li>Contributed to graphics design and branding using Canva and Adobe Illustrator</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-   
-
-    <div class="tl-item">
-      <div class="tl-date">OCT 2021 –<br>APR 2023</div>
-      <div>
-        <div class="tl-role">Customer Service Associate (Remote)</div>
-        <div class="tl-org">Cloud Factory Kenya</div>
-        <div class="tl-desc">
-          <ul>
-            <li>Managed high-volume customer interactions across digital platform with timely, professional resolution</li>
-            <li>Resolved complaints efficiently and escalated complex matters where necessary while maintaining case ownership.</li>
-            <li>Built positive client relationships through professional communication and effective issue resolution, contributing to customer satisfaction and service efficiency.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-date">AUG 2020 –<br>OCT 2021</div>
-      <div>
-        <div class="tl-role">Data Entry Specialist (Remote)</div>
-        <div class="tl-org">Cloud Factory Kenya</div>
-        <div class="tl-desc">
-          <ul>
-            <li>Verified and processed invoices with high accuracy</li>
-            <li>Conducted quality control checks to identify and correct discrepancies before submission</li>
-            <li>Entered and updated large volumes of data across internal systems while ensuring completeness and consistency.</li>
-    
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-date">OCT 2018 –<br>MAR 2019</div>
-      <div>
-        <div class="tl-role">Junior developer Intern </div>
-        <div class="tl-org">Lixnet Technologies Limited</div>
-        <div class="tl-desc">
-          <ul>
-            <li>Worked within an agile team to design, develop and test web and desktop applications using PHP (Laravel) and Java</li>
-            <li>Assisted in collecting and documenting user requirements and user stories</li>
-            <li>Took part in peer reviews, bug troubleshooting and version control via GitLab</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section class="gallery" id="design">
-  <span class="section-label">Selected Design Work</span>
-  <h2 class="section-title reveal">Campaign graphics, built for a real audience</h2>
-  <div class="gallery-grid reveal">
-
-    <div class="gallery-item tall" data-full="images/kutrrh-admission.jpg">
-      <img src="images/kutrrh-admission.jpg" alt="KUTRRH Open for Admission 2025 poster">
-      <div class="gallery-cap">
-        <div class="g-title">Open for Admission — 2025</div>
-        <div class="g-meta">Poster · Higher National Diploma Programmes</div>
-      </div>
-    </div>
-
-    <div class="gallery-item" data-full="images/kutrrh-webinar-obesity.jpg">
-      <img src="images/kutrrh-webinar-obesity.jpg" alt="KUTRRH childhood obesity webinar poster">
-      <div class="gallery-cap">
-        <div class="g-title">Childhood Obesity & Nutrition</div>
-        <div class="g-meta">Webinar Memo · Nutrition & Dietetics Dept.</div>
-      </div>
-    </div>
-
-    <div class="gallery-item" data-full="images/kutrrh-webinar-pcos.jpg">
-      <img src="images/kutrrh-webinar-pcos.jpg" alt="KUTRRH PCOS and nutrition webinar poster">
-      <div class="gallery-cap">
-        <div class="g-title">PCOS & Nutrition</div>
-        <div class="g-meta">Webinar Memo · Nutrition & Dietetics Dept.</div>
-      </div>
-    </div>
-
-
-    <div class="gallery-item tall" data-full="images/project-dekut-web.jpg">
-      <img src="images/project-dekut-web.jpg" alt="DeKUT AI Assistant landing page">
-      <div class="gallery-cap">
-        <div class="g-title">DeKUT AI Assistant — Web App</div>
-        <div class="g-meta">Built Project · AI Chatbot Landing Page</div>
-      </div>
-    </div>
-
-    <div class="gallery-item" data-full="images/project-dekut-chat.jpg">
-      <img src="images/project-dekut-chat.jpg" alt="DeKUT AI Assistant chatbot interface">
-      <div class="gallery-cap">
-        <div class="g-title">DeKUT AI Assistant — Chat UI</div>
-        <div class="g-meta">Built Project ·Using  Rag system</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section class="skills" id="skills">
-  <span class="section-label">Toolkit</span>
-  <h2 class="section-title reveal">What I actually work with</h2>
-  <div class="skills-grid reveal">
-    <div class="skill-col">
-      <h4>Design</h4>
-      <ul>
-        <li>Adobe Photoshop</li>
-        <li>Adobe Illustrator</li>
-        <li>Canva</li>
-        <li>Figma</li>
-      </ul>
-    </div>
-    <div class="skill-col">
-      <h4>ICT Support</h4>
-      <ul>
-        <li>Hardware diagnostics & repair</li>
-        <li>Software troubleshooting</li>
-        <li>Network setup & diagnostics</li>
-        <li>Microsoft Office Suite</li>
-      </ul>
-    </div>
-    <div class="skill-col">
-      <h4>Technical / Other</h4>
-      <ul>
-        <li>HTML, CSS, JavaScript, Bootstrap</li>
-        <li>PHP (Laravel), Java basics</li>
-        <li>Version control (GitLab)</li>
-        <li>Data entry & QA processes</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="certs">
-  <span class="section-label">Certifications</span>
-  <h2 class="section-title reveal">Credentials on file</h2>
-  <div class="cert-row reveal">
-    <div class="cert-card">
-      <img src="images/cert-alx.jpg" alt="ALX AI Career Essentials certificate">
-      <div>
-        <div class="c-name">AI Career Essentials</div>
-        <div class="c-meta">ALX · Issued Aug 2024</div>
-      </div>
-    </div>
-    <div class="cert-card">
-      <img src="images/copletion.jpg" alt="BBIT certificate 2026.">
-      <div>
-        <div class="c-name">BBIT</div>
-        <div class="c-meta">Dedan Kimathi University of Technology · Jun 2026</div>
-      </div>
-    </div>
-    <div class="cert-card">
-     <img src="images/dip.jpg" alt="Dip certification 2019.">
-      <div>
-        <div class="c-name">Diploma, Business & IT</div>
-        <div class="c-meta">Institute of Advanced Technology · 2019</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <span class="section-label">Get In Touch</span>
-  <h2 class="section-title reveal">Open to internships, contracts, and full-time roles</h2>
-  <div class="contact-grid reveal">
-    <div>
-      <p class="contact-lead">Whether you need someone to keep your systems running or your campaigns
-      looking sharp — or both — I'm based in Nairobi and ready to start.</p>
-      <ul class="contact-list">
-        <li><span class="c-label">Email</span><a href="mailto:cherylachieng05@gmail.com">cherylachieng05@gmail.com</a></li>
-        <li><span class="c-label">Phone</span><a href="tel:+254798406584">+254 798 406 584</a></li>
-        <li><span class="c-label">LinkedIn</span><a href="https://linkedin.com/in/cheryl-achieng-417132203" target="_blank">linkedin.com/in/cheryl-achieng</a></li>
-        <li><span class="c-label">Location</span><span>Nairobi, Kenya</span></li>
-      </ul>
-    </div>
-    <div>
-      <div class="referee-card">
-        <div class="r-name">Mr. Willington Mwachia</div>
-        <div class="r-role">Supervisor, KUTTRH</div>
-        <div class="r-contact">0795 315 138</div>
-      </div>
-      <div class="referee-card">
-        <div class="r-name">Mrs. Lisa Shikuku</div>
-        <div class="r-role">Team Lead, Cloud Factory Kenya</div>
-        <div class="r-contact">0701 620 260</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <span>© 2026 Cheryl Achieng </span>
-
-</footer>
-
-<div class="lightbox" id="lightbox">
-  <span class="lightbox-close" id="lightboxClose">[ ESC TO CLOSE ]</span>
-  <img id="lightboxImg" src="" alt="">
-</div>
-
+<div class="lb" id="lb"><span>CLICK OR PRESS ESC TO CLOSE</span><img id="lbi" src="" alt=""></div>
 <script>
-  // Reveal on scroll
-  const reveals = document.querySelectorAll('.reveal');
-  const obs = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){ e.target.classList.add('in'); }
-    });
-  }, {threshold:0.12});
-  reveals.forEach(el=>obs.observe(el));
-
-  // Lightbox
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightboxImg');
-  document.querySelectorAll('.gallery-item').forEach(item=>{
-    item.addEventListener('click', ()=>{
-      const src = item.querySelector('img').getAttribute('src');
-      lightboxImg.setAttribute('src', src);
-      lightbox.classList.add('active');
-    });
-  });
-  function closeLightbox(){ lightbox.classList.remove('active'); lightboxImg.setAttribute('src',''); }
-  lightbox.addEventListener('click', closeLightbox);
-  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLightbox(); });
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const lb=document.getElementById('lb'),lbi=document.getElementById('lbi');
+document.querySelectorAll('.shot img,.cert img').forEach(i=>i.addEventListener('click',()=>{lbi.src=i.src;lbi.alt=i.alt;lb.classList.add('on')}));
+const close=()=>{lb.classList.remove('on');lbi.src=''};
+lb.addEventListener('click',close);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
 </script>
-
 </body>
-</html>
+</html>v
